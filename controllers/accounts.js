@@ -13,8 +13,18 @@ function updateRoute(req, res) {
   });
 }
 
+function deleteRoute(req, res) {
+  req.currentUser.remove(() => {
+    req.session.regenerate(() => {
+      req.flash('info', 'Account deleted');
+      res.redirect('/');
+    });
+  });
+}
+
 module.exports = {
   show: showRoute,
   edit: editRoute,
-  update: updateRoute
+  update: updateRoute,
+  delete: deleteRoute
 };

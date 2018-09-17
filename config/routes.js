@@ -39,6 +39,10 @@ router.route('/account')
   .get(secureRoute, accountsController.show)
   .put(secureRoute, accountsController.update);
 
+router.route('/account/:id')
+  .delete(secureRoute, accountsController.delete);
+
+
 router.get('/account/edit', secureRoute, accountsController.edit);
 
 router.route('/*').all((req, res) => res.status(404).render('404'));
