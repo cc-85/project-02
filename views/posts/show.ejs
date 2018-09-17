@@ -5,7 +5,8 @@
   <h4><%= post.title %></h4>
   <h5><%= post.subtitle %></h5>
   <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
-  <p><%= post.copy %></p>
+
+  <p><%- post.copyHTML %> </p>
 
 
   <% post.comments.forEach(comment => { %>

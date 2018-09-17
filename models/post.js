@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const marked = require('marked');
 
 const commentSchema = new mongoose.Schema({
   content: { type: String, required: true, maxlength: 280 },
@@ -13,8 +14,16 @@ const postSchema = new mongoose.Schema({
   subtitle: String,
   hero: String,
   copy: String,
+  copyHTML: String,
   comments: [ commentSchema ],
   user: { type: mongoose.Schema.ObjectId, ref: 'User' }
+});
+
+postSchema.pre('save', function convertToMarkdown(next) {
+  if(this.isModified('copy')) {
+    this.copyHTML = marked(this.copy);
+  }
+  next();
 });
 
 //create the model

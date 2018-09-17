@@ -12,6 +12,22 @@ const flash = require('express-flash'); //allows flash messaging
 const auth = require('./lib/auth');
 const mongoose = require('mongoose');
 const routes = require('./config/routes');
+const marked = require('marked');
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  highlight: function(code) {
+    return require('highlight.js').highlightAuto(code).value;
+  },
+  pedantic: false,
+  gfm: true,
+  tables: true,
+  breaks: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false,
+  xhtml: false
+});
 
 //create the app
 const app = express();
@@ -27,6 +43,7 @@ app.set('views', `${__dirname}/views`);
 //use 3rd party packages
 app.use(ejsLayouts);
 app.use(express.static(`${__dirname}/public`));
+//app.use(marked);
 
 
 //add body-parser BEFORE the routes
@@ -56,5 +73,7 @@ app.use(auth);
 
 //routes
 app.use(routes);
+
+console.log(marked('I am using markdown.'));
 
 app.listen(port, () => console.log(`Express is running on port ${port}`));
