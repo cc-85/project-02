@@ -1,0 +1,40 @@
+<h1>SHOW PAGE</h1>
+<h2>A specific post</h2>
+
+<div>
+  <h4><%= post.title %></h4>
+  <h5><%= post.subtitle %></h5>
+  <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
+  <p><%= post.copy %></p>
+
+
+  <% post.comments.forEach(comment => { %>
+    <strong><%= comment.user.username %></strong>
+
+    <%= comment.content %>
+
+    <% if(locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
+      <form method="POST" action="/posts/<%= post._id %>/comments/<%= comment._id %>">
+      <input type="hidden" name="_method" value="DELETE" />
+      <button class="delete">Delete</button>
+      </form>
+    <% } %>
+  <% }) %>
+
+
+<%# below, if logged in, can comment and edit or delete post %>
+  <% if(locals.isAuthenticated) { %>
+
+    <form method="POST" action="/posts/<%= post._id %>/comments">
+    <label class="label">Comment</label>
+    <textarea class="textarea" name="content" placeholder="Comment (max 280 characters)"></textarea>
+    <button>Submit</button>
+    </form>
+
+
+    <a href="/posts/<%= post._id %>/edit">Edit</a>
+    <form method="POST" action="/posts/<%= post._id %>" >
+    <input type="hidden" name="_method" value="DELETE">
+    <button class="delete">Delete</button>
+    </form>
+  <% } %>

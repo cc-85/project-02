@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Blogging platform layout page</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" charset="utf-8"></script>
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/posts">All posts</a>
+
+    <% if(locals.isAuthenticated) { %>
+      <a href="/posts/new">Add a post</a>
+      <a href="/logout">Logout</a>
+      <a href="/account">My account</a>
+      <% } else { %>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <% } %>
+      </nav>
+
+
+  <!-- prints out our flash messages -->
+  <% for (const type in messages) { %>
+    <p class="notification <%= type %>"><%= messages[type] %></p>
+  <% } %>
+
+      <main>
+        <%- body %>
+      </main>
+    </body>
+    </html>

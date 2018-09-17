@@ -1,0 +1,28 @@
+<h1>EDIT PAGE</h1>
+<h2>A populated form</h2>
+
+<form method="POST" action="/posts/<%= post._id %>" >
+
+  <input type="hidden" name="_method" value="PUT" />
+  <div>
+    <label for="title">Title</label>
+    <input name="title" id="title" placeholder="Title" value="<%= post.title %>" />
+  </div>
+
+  <div>
+    <label for="subtitle">Subtitle</label>
+    <input name="subtitle" id="subtitle" placeholder="Subtitle" value="<%= post.subtitle %>" />
+  </div>
+
+  <div>
+    <label for="hero">Hero image</label>
+    <input name="hero" id="hero" placeholder="Hero image" value="<%= post.hero %>"required pattern="^https?://.+" />
+  </div>
+
+  <div>
+    <label for="copy">Copy</label>
+    <input name="copy" id="copy" placeholder="Copy" value="<%= post.copy %>" />
+  </div>
+
+  <button>Submit</button>
+</form>

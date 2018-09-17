@@ -1,0 +1,12 @@
+<h1>Index Page</h1>
+<h2>Blog posts</h2>
+
+<% locals.posts.forEach(post => { %>
+  <a href="/posts/<%= post._id %>">
+    <div>
+      <h4><%= post.title %></h4>
+      <h5><%= post.subtitle %></h5>
+      <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
+    </div>
+  </a>
+<% }) %>

@@ -1,0 +1,27 @@
+<h1>NEW PAGE</h1>
+<h2>An empty form</h2>
+
+<form method="POST" action="/posts" >
+  <div>
+    <label for="title">Title</label>
+    <input name="title" id="title" placeholder="Title" required/>
+  </div>
+
+  <div>
+    <label for="subtitle">Subtitle</label>
+    <input name="subtitle" id="subtitle" placeholder="Subtitle"/>
+  </div>
+
+  <div>
+    <label for="hero">Hero image</label>
+    <input name="hero" id="hero" placeholder="Hero image" required  pattern="^https?://.+" />
+  </div>
+
+
+  <div>
+    <label for="copy">Copy</label>
+    <input name="copy" id="copy" placeholder="Copy (max xxxx characters)"/>
+  </div>
+
+  <button>Submit</button>
+</form>
