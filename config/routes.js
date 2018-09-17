@@ -36,7 +36,10 @@ router.route('/login')
 router.get('/logout', sessionsController.delete);
 
 router.route('/account')
-  .get(accountsController.index);
+  .get(secureRoute, accountsController.show)
+  .put(secureRoute, accountsController.update);
+
+router.get('/account/edit', secureRoute, accountsController.edit);
 
 router.route('/*').all((req, res) => res.status(404).render('404'));
 

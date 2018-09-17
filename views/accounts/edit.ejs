@@ -1,0 +1,19 @@
+<h1>EDIT PAGE</h1>
+<h2>A populated account form</h2>
+
+
+<form method="POST" action="/account" >
+
+  <input type="hidden" name="_method" value="PUT" />
+  <div>
+    <label for="username">Username</label>
+    <input name="username" id="username" placeholder="Username" value="<%= user.username %>" />
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input name="email" id="email" placeholder="Email" value="<%= user.email %>" />
+  </div>
+
+  <button>Submit</button>
+</form>
