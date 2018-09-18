@@ -11,11 +11,13 @@ mongoose.connect(dbURI, (err, db) => {
     User.create([{
       username: 'cc-85',
       email: 'caoimhepower@gmail.com',
+      image: 'https://png.icons8.com/color/1600/guest-female.png',
       password: 'pass',
       passwordConfirmation: 'pass'
     }, {
       username: 'bob',
       email: 'bob@example.com',
+      image: 'https://png.icons8.com/color/1600/manager.png',
       password: 'pass',
       passwordConfirmation: 'pass'
     }], (err, users) => {

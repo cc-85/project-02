@@ -6,10 +6,6 @@ function showRoute(req, res) {
   });
 }
 
-// function showRoute(req, res) {
-//   res.render('accounts/show', { user: req.currentUser });
-// }
-
 function editRoute(req, res) {
   res.render('accounts/edit', { user: req.currentUser });
 }

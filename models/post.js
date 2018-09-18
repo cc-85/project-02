@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const marked = require('marked');
+const moment = require('moment');
 
 const commentSchema = new mongoose.Schema({
   content: { type: String, required: true, maxlength: 280 },
@@ -7,6 +8,11 @@ const commentSchema = new mongoose.Schema({
 }, {
   timestamps: true //automatically creates createdAt and updatedAt fields. Outside of the brackets because its a setting applied
 });
+
+commentSchema.virtual('createdAtFormatted')
+  .get(function() {
+    return moment(this.createdAt).fromNow();
+  });
 
 //describe the schema
 const postSchema = new mongoose.Schema({

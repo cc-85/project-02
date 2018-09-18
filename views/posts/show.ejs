@@ -15,14 +15,15 @@
       </div>
     </div>
 
-
         <p><%- post.copyHTML %> </p>
 
 
         <% post.comments.forEach(comment => { %>
-          <p><strong><%= comment.user.username %></strong> <%= comment.createdAt %>
+          <p><img src="<%= comment.user.image %>" style="height:50px"> <strong><%= comment.user.username %></strong>
           <br>
           <%= comment.content %>
+          <br>
+          <%= comment.createdAtFormatted %>
           </p>
 
           <% if(locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>

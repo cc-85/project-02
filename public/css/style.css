@@ -6,6 +6,12 @@ body {
   font-family: sans-serif;
 }
 
+.hero.is-large {
+  background-image: url(https://kateevadesigns.files.wordpress.com/2018/08/img_7631.jpg?w=1640&h=624&crop=1);
+  background-repeat: no-repeat;
+}
+
+
 p.notification {
   color: white;
   padding: 15px;
@@ -17,4 +23,8 @@ p.notification.info {
 
 p.notification.danger {
   background-color: red;
+}
+
+img.profile {
+  border-radius: 50%;
 }
