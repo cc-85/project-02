@@ -1,41 +1,56 @@
-<h1>SHOW PAGE</h1>
-<h2>A specific post</h2>
+<section class="section">
+  <%# <h1>SHOW PAGE</h1>
+  <h2>A specific post</h2> %>
+  <div class="container">
 
-<div>
-  <h4><%= post.title %></h4>
-  <h5><%= post.subtitle %></h5>
-  <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
+    <div class="columns">
+      <div class="column is-one-third">
+        <h1 class="title is-2"><%= post.title %></h1>
+        <h2 class="subtitle is-3"><%= post.subtitle %></h2>
+        <h2 class="subtitle">Posted by: <%= post.user.username %></h2>
 
-  <p><%- post.copyHTML %> </p>
-
-
-  <% post.comments.forEach(comment => { %>
-    <strong><%= comment.user.username %></strong>
-
-    <%= comment.content %>
-
-    <% if(locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
-      <form method="POST" action="/posts/<%= post._id %>/comments/<%= comment._id %>">
-      <input type="hidden" name="_method" value="DELETE" />
-      <button class="delete">Delete</button>
-      </form>
-    <% } %>
-  <% }) %>
+      </div>
+      <div class="column is-two-thirds">
+        <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
+      </div>
+    </div>
 
 
-<%# below, if logged in, can comment and edit or delete post %>
-  <% if(locals.isAuthenticated) { %>
-
-    <form method="POST" action="/posts/<%= post._id %>/comments">
-    <label class="label">Comment</label>
-    <textarea class="textarea" name="content" placeholder="Comment (max 280 characters)"></textarea>
-    <button>Submit</button>
-    </form>
+        <p><%- post.copyHTML %> </p>
 
 
-    <a href="/posts/<%= post._id %>/edit">Edit</a>
-    <form method="POST" action="/posts/<%= post._id %>" >
-    <input type="hidden" name="_method" value="DELETE">
-    <button class="delete">Delete</button>
-    </form>
-  <% } %>
+        <% post.comments.forEach(comment => { %>
+          <p><strong><%= comment.user.username %></strong> <%= comment.createdAt %>
+          <br>
+          <%= comment.content %>
+          </p>
+
+          <% if(locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
+            <form method="POST" action="/posts/<%= post._id %>/comments/<%= comment._id %>">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button class="delete">Delete</button>
+            </form>
+            <% } %>
+            <% }) %>
+
+
+            <%# below, if logged in, can comment and edit or delete post %>
+            <% if(locals.isAuthenticated) { %>
+
+              <form method="POST" action="/posts/<%= post._id %>/comments">
+              <label class="label">Comment</label>
+              <textarea class="textarea" name="content" placeholder="Comment (max 280 characters)"></textarea>
+              <button>Submit</button>
+              </form>
+              <% } %>
+
+                <% if(locals.isAuthenticated && post.user && locals.currentUser._id.equals(post.user._id)) { %>
+              <a href="/posts/<%= post._id %>/edit">Edit</a>
+              <form method="POST" action="/posts/<%= post._id %>" >
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="delete">Delete</button>
+              </form>
+              <% } %>
+    </div>
+  </div>
+</section>

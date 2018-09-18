@@ -1,8 +1,13 @@
 const Post = require('../models/post');
 
 function indexRoute(req, res) {
-  Post.find().sort({ name: 1 }).exec((err, posts) => {
-    res.render('posts/index', { posts });
+  // if there is a search in the querystring
+  // create a regular expression to use in the find method
+  const query = {};
+  if(req.query.search) query.title = new RegExp(req.query.search, 'i');
+
+  Post.find(query).sort({ name: 1 }).exec((err, posts) => {
+    res.render('posts/index', { posts, search: req.query.search });
   });
 }
 

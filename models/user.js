@@ -7,6 +7,14 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true }
 });
 
+//virtual to aggregate the posts of a user
+userSchema.virtual('posts', {
+  localField: '_id',
+  foreignField: 'user',
+  ref: 'Post'
+});
+
+
 //set up a passwordConfirmation virtual because we DO want the data
 //but we don't want to store it in the database
 userSchema.virtual('passwordConfirmation')

@@ -9,3 +9,12 @@
 <input type="hidden" name="_method" value="DELETE">
 <button class="delete">Delete account</button>
 </form>
+
+
+<% user.posts.forEach(post => { %>
+  <h1 class="title"><%= post.title %></h1>
+  <h2 class="subtitle"><%= post.subtitle %></h2>
+   <a href="/posts/<%= post._id %>">
+     <img src="<%= post.hero %>" alt="<%= post.title %>">
+   </a>
+<% }) %>

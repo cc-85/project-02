@@ -1,6 +1,14 @@
+const User = require('../models/user');
+
 function showRoute(req, res) {
-  res.render('accounts/show', { user: req.currentUser });
+  User.populate(req.currentUser, { path: 'posts' }, (err, user) => {
+    res.render('accounts/show', { user });
+  });
 }
+
+// function showRoute(req, res) {
+//   res.render('accounts/show', { user: req.currentUser });
+// }
 
 function editRoute(req, res) {
   res.render('accounts/edit', { user: req.currentUser });

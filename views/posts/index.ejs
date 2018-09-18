@@ -1,5 +1,18 @@
-<h1>Index Page</h1>
-<h2>Blog posts</h2>
+<section class="section">
+  <div class="container">
+
+    <form method="GET" action="/posts">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input class="input" name="search" type="text" placeholder="Search" value="<%= locals.search %>">
+        </div>
+        <div class="control">
+          <button class="button">
+            Search
+          </a>
+        </div>
+      </div>
+    </form>
 
 <% locals.posts.forEach(post => { %>
   <a href="/posts/<%= post._id %>">
@@ -10,3 +23,6 @@
     </div>
   </a>
 <% }) %>
+
+</div>
+</section>
