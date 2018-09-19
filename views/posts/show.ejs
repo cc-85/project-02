@@ -1,57 +1,107 @@
 <section class="section">
-  <%# <h1>SHOW PAGE</h1>
-  <h2>A specific post</h2> %>
   <div class="container">
 
     <div class="columns">
-      <div class="column is-one-third">
+      <div class="column is-four-fifths">
+        <hr>
         <h1 class="title is-2"><%= post.title %></h1>
         <h2 class="subtitle is-3"><%= post.subtitle %></h2>
-        <h2 class="subtitle">Posted by: <%= post.user.username %></h2>
 
-      </div>
-      <div class="column is-two-thirds">
+        <div class="columns">
+          <div class="column is-1">
+            <img class="profile" src="<%= post.user.imageSrc %>" style="height:50px">
+          </div>
+          <div class="column">
+            <div><h3><%= post.postCreatedAtFormatted %></h3></div>
+            <div><h3>Posted by: <strong><%= post.user.username %></strong></h3></div>
+          </div>
+        </div>
+
+
         <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
-      </div>
-    </div>
 
         <p><%- post.copyHTML %> </p>
-
+        <hr>
 
         <% post.comments.forEach(comment => { %>
-          <p><img src="<%= comment.user.image %>" style="height:50px"> <strong><%= comment.user.username %></strong>
-          <br>
-          <%= comment.content %>
-          <br>
-          <%= comment.createdAtFormatted %>
-          </p>
+          <div class="columns">
+            <div class="column is-1">
+              <img class="profile" src="<%= comment.user.imageSrc %>" style="height:50px">
+            </div>
+            <div class="column is-10">
+              <p><strong><%= comment.user.username %></strong><br>
+                <%= comment.content %><br>
+                <%= comment.createdAtFormatted %>
+              </p>
+            </div>
 
-          <% if(locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
-            <form method="POST" action="/posts/<%= post._id %>/comments/<%= comment._id %>">
-            <input type="hidden" name="_method" value="DELETE" />
-            <button class="delete">Delete</button>
-            </form>
+
+
+            <% if(locals.isAuthenticated && comment.user && locals.currentUser._id.equals(comment.user._id)) { %>
+              <form method="POST" action="/posts/<%= post._id %>/comments/<%= comment._id %>">
+                <input type="hidden" name="_method" value="DELETE" />
+                <div class="column is-1">
+                  <button class="delete">Delete</button>
+                </div>
+              </form>
+
             <% } %>
-            <% }) %>
+          </div>
+        <% }) %>
 
 
             <%# below, if logged in, can comment and edit or delete post %>
+
             <% if(locals.isAuthenticated) { %>
 
               <form method="POST" action="/posts/<%= post._id %>/comments">
-              <label class="label">Comment</label>
-              <textarea class="textarea" name="content" placeholder="Comment (max 280 characters)"></textarea>
-              <button>Submit</button>
+              <div class="field">
+              <label class="label">Comments:</label>
+              <textarea class="textarea" name="content" placeholder="Comment"></textarea>
+              </div>
+              <button class="button">Submit</button>
               </form>
               <% } %>
 
                 <% if(locals.isAuthenticated && post.user && locals.currentUser._id.equals(post.user._id)) { %>
-              <a href="/posts/<%= post._id %>/edit">Edit</a>
-              <form method="POST" action="/posts/<%= post._id %>" >
-              <input type="hidden" name="_method" value="DELETE">
-              <button class="delete">Delete</button>
-              </form>
+                  <hr>
+                  <div class="columns">
+                    <div class="column is-10">
+                      <a class="button is-info" href="/posts/<%= post._id %>/edit">Edit post</a>
+                    </div>
+                    <div class="column is-2">
+                      <form method="POST" action="/posts/<%= post._id %>" >
+                      <input type="hidden" name="_method" value="DELETE">
+                      <span class="button is-danger">
+                        Delete post
+                        <button class="delete"></button>
+                        </span>
+                      </form>
+                    </div>
+                  </div>
               <% } %>
+
+      </div>
+
+      <div class="column is-one-fifth">
+        <img class="group" src="../assets/images/group.png" >
+        <p><strong>Hello! Welcome to <br>Sew & Sews.</strong></p>
+        <p>This is a platform for Sewists to share sewing tips and inspiration, plus news about sewing patterns and online workshops.<br><br>Enjoy!<br><br></p>
+        <hr>
+        <p><strong>Here's some of our favourite sites:</strong>
+          <a class="sites" target="_blank" href="https://www.instagram.com/quirkysewandsew/">@quirkysewandsew</a><br>
+          <a class="sites" target="_blank" href="https://www.tillyandthebuttons.com/">Tilly and the Buttons</a><br>
+          <a class="sites" target="_blank" href="https://lukenofurther.com/">Luke No Further</a><br>
+          <a class="sites" target="_blank" href="https://generalassemb.ly/">General Assembly</a>
+        </p>
+      </div>
+
     </div>
+
+
+
+
+
+
   </div>
 </section>

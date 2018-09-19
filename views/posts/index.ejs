@@ -1,28 +1,52 @@
 <section class="section">
   <div class="container">
 
-    <form method="GET" action="/posts">
-      <div class="field has-addons">
-        <div class="control is-expanded">
-          <input class="input" name="search" type="text" placeholder="Search" value="<%= locals.search %>">
-        </div>
-        <div class="control">
-          <button class="button">
-            Search
-          </a>
-        </div>
-      </div>
-    </form>
+    <div class="columns">
+      <div class="column is-four-fifths">
 
-<% locals.posts.forEach(post => { %>
-  <a href="/posts/<%= post._id %>">
-    <div>
-      <h4><%= post.title %></h4>
-      <h5><%= post.subtitle %></h5>
-      <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
+        <form method="GET" action="/posts">
+          <div class="field has-addons">
+            <div class="control is-expanded">
+              <input class="input" name="search" type="text" placeholder="Search" value="<%= locals.search %>">
+            </div>
+            <div class="control">
+              <button class="button">
+                Search
+              </a>
+            </div>
+          </div>
+        </form>
+
+        <% locals.posts.forEach(post => { %>
+          <hr>
+          <a href="/posts/<%= post._id %>">
+            <div>
+              <p><%= post.postCreatedAtFormatted %> / Posted by: <%= post.user.username %></p>
+              <h2 class="title is-4"><%= post.title %></h2>
+              <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
+            </div>
+            <p class="more">Read more</p>
+          </a>
+        <% }) %>
+      </div>
+      <div class="column is-one-fifth">
+        <img class="group" src="./assets/images/group.png" >
+        <p><strong>Hello! Welcome to <br>Sew & Sews.</strong></p>
+        <p>This is a platform for Sewists to share sewing tips and inspiration, plus news about sewing patterns and online workshops.<br><br>Enjoy!<br><br></p>
+        <hr>
+        <p><strong>Here's some of our favourite sites:</strong>
+          <a class="sites" target="_blank" href="https://www.instagram.com/quirkysewandsew/">@quirkysewandsew</a><br>
+          <a class="sites" target="_blank" href="https://www.tillyandthebuttons.com/">Tilly and the Buttons</a><br>
+          <a class="sites" target="_blank" href="https://lukenofurther.com/">Luke No Further</a><br>
+          <a class="sites" target="_blank" href="https://generalassemb.ly/">General Assembly</a>
+        </p>
+      </div>
     </div>
-  </a>
-<% }) %>
+
+
+
+
+
 
 </div>
 </section>

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Blogging platform layout page</title>
+  <title>Sew & Sews - A blogging platform for Sewists</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/app.js" charset="utf-8"></script>
@@ -12,7 +12,7 @@
   <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
-        <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+        <img src="/assets/images/logo-02.png" alt="Sew & Sews - A blogging platform for Sewists" width="112" height="28">
       </a>
 
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -28,9 +28,9 @@
           <a class="navbar-item" href="/posts">All posts</a>
 
           <% if(locals.isAuthenticated) { %>
-            <a class="navbar-item" href="/posts/new">Add a post</a>
-            <a class="navbar-item" href="/account">My Account</a>
+            <a class="navbar-item" href="/posts/new">Create post</a>
             <a class="navbar-item" href="/logout">Logout</a>
+            <a class="navbar-item" href="/account"><strong><%= locals.currentUser.username %></strong> <img class="profile "src="<%= locals.currentUser.imageSrc %>" style="height:25px"></a>
           <% } else { %>
             <a class="navbar-item" href="/login">Login</a>
             <a class="navbar-item" href="/register">Register</a>

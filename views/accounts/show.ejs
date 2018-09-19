@@ -1,21 +1,55 @@
-<h1>My account</h1>
+<section class="section">
+  <div class="container">
 
-<p>Username: <%= user.username %></p>
-<p>Email: <%= user.email %></p>
-  <img src="<%= user.image %>" style="height:100px">
+    <h1 class="title">My account</h1>
+    <div class="columns">
+      <div class="column is-2">
+        <p><img class="profile" src="<%= user.imageSrc %>" style="height:120px"></p>
+      </div>
+      <div class="column">
+        <p><strong>Username: </strong><%= user.username %></p>
+        <p><strong>Email: </strong><%= user.email %></p>
+        <a class="button is-info" href="/account/edit">Edit details</a>
+        <form method="POST" action="/account/<%= user._id %>" >
+          <input type="hidden" name="_method" value="DELETE">
+          <span class="button is-danger">
+            Delete account
+            <button class="delete"></button>
+          </span>
+        </form>
+      </div>
+    </div>
 
 
-<a href="/account/edit">Edit</a>
-<form method="POST" action="/account/<%= user._id %>" >
-<input type="hidden" name="_method" value="DELETE">
-<button class="delete">Delete account</button>
-</form>
+
+    <h1 class="title">My posts</h1>
+    <div class="columns">
+
+    <% user.posts.forEach(post => { %>
+      <div class="column is-one-third">
 
 
-<% user.posts.forEach(post => { %>
-  <h1 class="title"><%= post.title %></h1>
-  <h2 class="subtitle"><%= post.subtitle %></h2>
-   <a href="/posts/<%= post._id %>">
-     <img src="<%= post.hero %>" alt="<%= post.title %>">
-   </a>
-<% }) %>
+<a href="/posts/<%= post._id %>">
+       <div class="card">
+       <div class="card-image">
+       <figure class="image is-4by3">
+       <img class="card" src="<%= post.hero %>" alt="<%= post.title %>">
+       </figure>
+       </div>
+       <div class="card-content">
+       <p class="subtitle is-6">Posted <%= post.postCreatedAtFormatted %></p>
+       <p class="title is-4"><%= post.title %></p>
+       <p>Read more</p>
+       <a href="/posts/<%= post._id %>/edit">Edit post</a>
+       </div>
+       </div>
+</a>
+</div>
+    <% }) %>
+  </div>
+
+
+
+
+  </div>
+</section>

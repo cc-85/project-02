@@ -1,24 +1,32 @@
-<h1>EDIT PAGE</h1>
-<h2>A populated account form</h2>
+<section class="section">
+  <div class="form container">
+    <h1 class="title">Edit account</h1>
 
+    <form method="POST" action="/account" >
+      <input type="hidden" name="_method" value="PUT" />
 
-<form method="POST" action="/account" >
+        <div class="field">
+          <label class="label" for="username">Username</label>
+          <div class="control">
+            <input class="input" name="username" id="username" placeholder="Username"  value="<%= user.username %>" />
+          </div>
+        </div>
 
-  <input type="hidden" name="_method" value="PUT" />
-  <div>
-    <label for="username">Username</label>
-    <input name="username" id="username" placeholder="Username" value="<%= user.username %>" />
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <div class="control">
+            <input class="input" name="email" id="email" placeholder="Email"  value="<%= user.email %>" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="image">Image</label>
+          <div class="control">
+            <input class="input" name="image" id="image" placeholder="Image"  value="<%= user.image %>" />
+          </div>
+        </div>
+
+      <button class="button is-link">Submit</button>
+    </form>
   </div>
-
-  <div>
-    <label for="email">Email</label>
-    <input name="email" id="email" placeholder="Email" value="<%= user.email %>" />
-  </div>
-
-  <div>
-    <label for="image">Image</label>
-    <input name="image" id="image" placeholder="Image" value="<%= user.image %>" />
-  </div>
-
-  <button>Submit</button>
-</form>
+</section>

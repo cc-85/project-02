@@ -17,7 +17,7 @@ function createRoute(req, res) {
 
     req.session.userId = user._id;
 
-    req.flash('info', 'Welcome back');
+    req.flash('info', `Welcome back ${user.username}!`);
     res.redirect('/posts');
   });
 }

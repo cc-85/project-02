@@ -1,8 +1,32 @@
-<section class="hero is-large">
+<section class="hero is-medium is-primary">
   <div class="hero-body">
-    <div class="container">
-      <h1 class="title">Blogging platform</h1>
-      <h2 class="subtitle">Now with Express EJS Layouts!</h2>
+    <div class="container has-text-centered">
+      <h1 class="title">Welcome!</h1>
     </div>
+  </div>
+</section>
+
+<section class="homepage">
+  <h1 class="title is-5 featured-posts">Featured Posts</h1>
+  <div class="columns">
+
+    <% locals.posts.forEach(post => { %>
+      <div class="column is-one-third">
+        <a href="/posts/<%= post._id %>">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+              <img class="card" src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
+              </figure>
+            </div>
+            <div class="card-content">
+              <p><%= post.postCreatedAtFormatted %> / Posted by: <%= post.user.username %></p>
+              <h2 class="title is-4"><%= post.title %></h2>
+              <p class="more">Read more</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% }) %>
   </div>
 </section>

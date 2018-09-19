@@ -7,6 +7,9 @@ const accountsController = require('../controllers/accounts');
 //accessing specific routes
 const secureRoute = require('../lib/secureRoute');
 
+router.route('/')
+  .get(postsController.home);
+
 router.get('/', (req, res) => res.render('home'));
 
 router.route('/posts')

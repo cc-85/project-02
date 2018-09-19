@@ -6,9 +6,56 @@ body {
   font-family: sans-serif;
 }
 
-.hero.is-large {
-  background-image: url(https://kateevadesigns.files.wordpress.com/2018/08/img_7631.jpg?w=1640&h=624&crop=1);
-  background-repeat: no-repeat;
+div.form {
+  max-width: 800px;
+}
+
+section.homepage {
+  margin: auto;
+  margin-top: 50px;
+  max-width: 950px;
+}
+
+.featured-posts {
+  text-align: center;
+}
+
+.hero.is-medium {
+  background-image: url("/assets/images/header-image-large.png");
+  background-size: 1280px 324px;
+}
+.hero.is-primary .title {
+  display: none;
+}
+
+.navbar-item img {
+  height: 20px;
+}
+
+hr {
+  background-color: #56DF9A;
+  height: 5px;
+  margin: 1rem 0;
+}
+
+.button, .button.is-link {
+  color: #fff;
+  background-color: #56DF9A;
+}
+
+.title.is-4, .sites, .subtitle.is-3 {
+  color: #56DF9A;
+}
+
+a {
+  color: #2E2E2E;
+}
+
+.more {
+  color: #56DF9A;
+  text-decoration: underline;
+  padding-bottom: 20px;
+
 }
 
 
@@ -27,4 +74,8 @@ p.notification.danger {
 
 img.profile {
   border-radius: 50%;
+}
+
+img.card {
+  object-fit: cover;
 }

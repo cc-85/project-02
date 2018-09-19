@@ -23,7 +23,15 @@ const postSchema = new mongoose.Schema({
   copyHTML: String,
   comments: [ commentSchema ],
   user: { type: mongoose.Schema.ObjectId, ref: 'User' }
+}, {
+  timestamps: true
 });
+
+postSchema.virtual('postCreatedAtFormatted')
+  .get(function() {
+    return moment(this.createdAt).fromNow();
+  });
+
 
 postSchema.pre('save', function convertToMarkdown(next) {
   if(this.isModified('copy')) {

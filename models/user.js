@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  image: { type: String, required: true, unique: true },
+  image: { type: String, unique: true },
   password: { type: String, required: true }
 });
 
@@ -14,6 +14,7 @@ userSchema.virtual('posts', {
   foreignField: 'user',
   ref: 'Post'
 });
+
 
 
 //set up a passwordConfirmation virtual because we DO want the data
@@ -56,5 +57,11 @@ userSchema.methods.validatePassword = function validatePassword(password) {
   //`this.password` is the hashed password stored on the user record
   return bcrypt.compareSync(password, this.password);
 };
+
+//adding default images
+userSchema.virtual('imageSrc')
+  .get(function() {
+    return this.image || 'https://www.podstelford.org/wp-content/uploads/2017/04/noavatar.png';
+  });
 
 module.exports = mongoose.model('User', userSchema);
