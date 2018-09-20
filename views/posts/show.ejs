@@ -9,11 +9,11 @@
 
         <div class="columns">
           <div class="column is-1">
-            <img class="profile" src="<%= post.user.imageSrc %>" style="height:50px">
+            <img class="profile" src="<%= post.user ? post.user.imageSrc : 'https://www.podstelford.org/wp-content/uploads/2017/04/noavatar.png' %>" style="height:50px">
           </div>
           <div class="column">
             <div><h3><%= post.postCreatedAtFormatted %></h3></div>
-            <div><h3>Posted by: <strong><%= post.user.username %></strong></h3></div>
+            <div><h3>Posted by: <strong><%= post.user ? post.user.username : 'account deleted' %></strong></h3></div>
           </div>
         </div>
 
@@ -26,10 +26,10 @@
         <% post.comments.forEach(comment => { %>
           <div class="columns">
             <div class="column is-1">
-              <img class="profile" src="<%= comment.user.imageSrc %>" style="height:50px">
+              <img class="profile" src="<%= comment.user ? comment.user.imageSrc : 'https://www.podstelford.org/wp-content/uploads/2017/04/noavatar.png' %>" style="height:50px">
             </div>
             <div class="column is-10">
-              <p><strong><%= comment.user.username %></strong><br>
+              <p><strong><%= comment.user ? comment.user.username : 'account deleted' %></strong><br>
                 <%= comment.content %><br>
                 <%= comment.createdAtFormatted %>
               </p>

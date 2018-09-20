@@ -1,7 +1,7 @@
 const Post = require('../models/post');
 
 function homeRoute(req, res) {
-  Post.find().sort({ createdAt: -1 }).populate('user').exec((err, posts) => {
+  Post.find().sort({ createdAt: -1 }).populate('user').limit(3).exec((err, posts) => {
     res.render('home', { posts });
   });
 }

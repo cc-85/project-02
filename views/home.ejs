@@ -20,7 +20,7 @@
               </figure>
             </div>
             <div class="card-content">
-              <p><%= post.postCreatedAtFormatted %> / Posted by: <%= post.user.username %></p>
+              <p><%= post.postCreatedAtFormatted %> / Posted by: <%= post.user ? post.user.username : 'account deleted' %></p>
               <h2 class="title is-4"><%= post.title %></h2>
               <p class="more">Read more</p>
             </div>

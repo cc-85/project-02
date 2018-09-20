@@ -21,7 +21,7 @@
           <hr>
           <a href="/posts/<%= post._id %>">
             <div>
-              <p><%= post.postCreatedAtFormatted %> / Posted by: <%= post.user.username %></p>
+              <p><%= post.postCreatedAtFormatted %> / Posted by: <%= post.user ? post.user.username : 'account deleted' %></p>
               <h2 class="title is-4"><%= post.title %></h2>
               <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
             </div>
