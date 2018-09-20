@@ -26,7 +26,7 @@ mongoose.connect(dbURI, (err, db) => {
 
       Post.create([{
         title: 'Five tips for accurate sewing',
-        subtitle: 'Handy hints sewing with precision',
+        subtitle: 'Handy hints for sewing with precision',
         hero: 'https://images.unsplash.com/photo-1524224971825-8c690dec4b7c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=46ecbd296080ca90132bdc7522c8de1f&auto=format&fit=crop&w=1500&q=80',
         copy: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         user: users[0]

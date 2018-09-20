@@ -5,9 +5,19 @@ function newRoute(req, res) {
 }
 
 function createRoute(req, res) {
-  User.create(req.body, (err) => {
-    if(err) return res.redirect('/register');
-    res.redirect('/login');
+  User.create(req.body, () => {
+
+
+    User.findOne({ email: req.body.email }, (err, user) => {
+      //verify that the password supplied once hashed matches the
+      //hashed password in the database
+
+
+      req.session.userId = user._id;
+
+      req.flash('info', 'Account created!');
+      res.redirect('/');
+    });
   });
 }
 
