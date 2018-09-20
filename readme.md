@@ -42,15 +42,15 @@ A blogging platform for the sewing community.
 
 I started by making models and seeds for my posts, as well as the basic beginning of a layout page. Once I could display my posts as necessary I began making the controllers so that posts could be created and updated.
 
-Next I started on the registrations process, so that new users could be created and then log in. After this was implemented, I specified which pages and functionality would only be used by logged in users.
+I then started on the registrations process, so that new users could be created and then log in. After this was implemented, I specified which pages and functionality would only be used by logged in users.
 
-I used my initial wireframes to construct a basic layout for my main play page, I then used this to get the basic functionality working.
+Next I worked on giving users the ability to comment on posts. After this was functioning, I made it so that users could only delete their own comments.
 
-I started by getting selected pieces to move from the menu to the plate, then randomly generating orders. The next step would be to compare the two and produce outcomes depending on whether the two matched or not.
+I then started to create a My Account page so that logged in users could view and amend their personal information as well as viewing all of the posts they had created. The can also delete their account from there.
 
-Once the basics of the game were working, I added second and third levels with bigger randomly generated orders and more time on the timer. I also created a start page with room for basic instructions and an end page which would show the player their score.
+The last few things I worked on included getting the 3 most recent posts to show on the homepage and tweaking my code so that after users had deleted their account, their posts and comments could still be used as 'account deleted'. 
 
-Next I looked into making the game function on mobile. I had to amend the functionality so that different click/touch options would be registered on the necessary device. The mobile version also needed some layout tweaks, so I next focussed on CSS for both desktop and mobile versions. Lastly, I added a few sounds throughout the game.
+Finally I began using Bulma to style the blogging platform. I then used my own CSS to tweak the styling so that it would look less like I had used Bulma!
 
 ### Challenges
 
