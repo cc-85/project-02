@@ -20,7 +20,7 @@
 
         <img src="<%= post.hero %>" alt="<%= post.title %>" height="200"/>
 
-        <p><%- post.copyHTML %> </p>
+        <div class="content"><%- post.copyHTML %> </div>
         <hr>
 
         <% post.comments.forEach(comment => { %>

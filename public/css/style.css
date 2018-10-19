@@ -22,7 +22,9 @@ section.homepage {
 
 .hero.is-medium {
   background-image: url("/assets/images/header-image-large.png");
-  background-size: 1280px 324px;
+  background-size: cover;
+  background-position: center;
+  /* background-size: 1280px 324px; */
 }
 .hero.is-primary .title {
   display: none;
