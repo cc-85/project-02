@@ -6,7 +6,7 @@
 ## Technologies used
 
 * HTML5/CSS/JS
-* NodeJs
+* Node.js
 * Express
 * EJS
 * MongoDB/Mongoose
@@ -48,7 +48,7 @@ Next I worked on giving users the ability to comment on posts. After this was fu
 
 I then started to create a My Account page so that logged in users could view and amend their personal information as well as viewing all of the posts they had created. The can also delete their account from there.
 
-The last few things I worked on included getting the 3 most recent posts to show on the homepage and tweaking my code so that after users had deleted their account, their posts and comments could still be used as 'account deleted'. 
+The last few things I worked on included getting the 3 most recent posts to show on the homepage and tweaking my code so that after users had deleted their account, their posts and comments could still be used as 'account deleted'.
 
 Finally I began using Bulma to style the blogging platform. I then used my own CSS to tweak the styling so that it would look less like I had used Bulma!
 
